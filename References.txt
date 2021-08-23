@@ -1,0 +1,29 @@
+・Django_tutorial
+    url : https://tutorial.djangogirls.org/
+
+・[Django] Markdownエディタを実装する方法[簡単]
+    url : https://yuki.world/django-markdown-implement/
+
+・Bootstrap公式ドキュメント
+    url : https://getbootstrap.jp/docs/5.0/getting-started/introduction/
+
+・Bootstrapでcontainerやcolの余白を消す方法を解説！
+    url : https://qumeru.com/magazine/192
+
+・[Django] ブログサイトにカテゴリー・タグ・関連記事機能を構築する
+    url : https://zerofromlight.com/blogs/detail/60/#_1
+
+・Djangoのtemplateでリストでfor文で取り出す際，ループする回数を指定したい
+    url : https://teratail.com/questions/260389
+
+・Djangoでページネーションを使う(django.core.paginator)
+    url : https://qiita.com/jansnap/items/660dbf620ad7c5829c69
+
+・LOGO　MAKER
+    url : https://logo-maker.stores.jp/
+
+・silhouetteAC
+    url : https://www.silhouette-ac.com/
+
+・Canva
+    url : https://www.canva.com/

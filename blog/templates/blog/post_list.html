@@ -1,0 +1,83 @@
+{% extends 'blog/index.html' %}
+{% load markdown_extras %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="image">
+    <img src="{% static 'images/Honfleur.JPG' %}" width="100%" style="opacity: 0.8;">
+</div>
+
+<div class="bloglist bg-white border">
+    <h2 class="text-center my-3">--- Blog ---</h2>
+        {% if category %}
+            <h3 class="text-left mx-4">カテゴリー：{{ category }}</h3>
+        {% endif %}
+
+        <div class="contents row justify-content-center text-center my-3 py-4">
+        {% if category %}
+            {% for post in blog %}
+                <div class="blog-card mx-4 px-0 mb-5 col-md-5 col-8">
+                <a href="{% url 'post_detail' pk=post.pk %}" class="floating text-reset text-decoration-none">
+                    <img src="{% static 'images/Honfleur.JPG' %}" alt="" class="col-12 px-0" style="height: 180px;">
+                    <div class="card-text text-left px-2 py-2">
+                        <h4 class="my-1 mb-4" style="color: rgba(1, 34, 105, 0.767);">{{ post.title }}</h4>
+
+                        <!--<p class="mb-0">text : {{ post.text|markdown|safe }}</p>-->
+                    </div>
+                    <p class="text-right mb-1 px-2" style="color: rgba(1, 34, 105, 0.767);">{{ post.published_date }}</p>
+                </a>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        {% else %}
+            {% for post in page_obj %}
+                <div class="blog-card mx-4 px-0 mb-5 col-md-5 col-8">
+                    <a href="{% url 'post_detail' pk=post.pk %}" class="floating text-reset text-decoration-none">
+                        <img src="{% static 'images/Honfleur.JPG' %}" alt="" class="col-12 px-0" style="height: 180px;">
+                        <div class="card-text text-left px-2 py-2">
+                            <h4 class="my-1 mb-4" style="color: rgba(1, 34, 105, 0.767);">{{ post.title }}</h4>
+
+                            <!--<p class="mb-0">text : {{ post.text|markdown|safe }}</p>-->
+                        </div>
+                        <p class="text-right mb-1 px-2" style="color: rgba(1, 34, 105, 0.767);">{{ post.published_date }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="page">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li><a class="page-link text-primary d-inline-block" href="?page={{ page_obj.previous_page_number }}">前</a></li>
+                    {% else %}
+                        <li class="disabled"><div class="page-link text-secondary d-inline-block disabled" href="#">前</div></li>
+                    {% endif %}
+
+                    {% for link_page in page_obj.paginator.page_range %}
+                        {% if link_page %}
+                            {% if link_page == page_obj.number %}
+                                <li class="disabled"><div class="page-link text-secondary d-inline-block disabled" href="#">{{ link_page }}</div></li>
+                            {% else %}
+                                <li><a class="page-link text-primary d-inline-block" href="?page={{ link_page }}">{{ link_page }}</a></li>
+                            {% endif %}
+                        {% else %}
+                            <li class="disabled"><a class="page-link text-secondary d-inline-block text-muted" href="#">・・・</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li><a class="page-link text-primary d-inline-block" href="?page={{ page_obj.next_page_number }}">次</a></li>
+                    {% else %}
+                        <li class="disabled"><div class="page-link text-secondary d-inline-block disabled" href="#">次</div></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+</div>
+{% endblock %}
+
